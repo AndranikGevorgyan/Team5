@@ -1,10 +1,6 @@
 const mongoose = require("mongoose");
 
-<<<<<<< HEAD
 const UserSchema = mongoose.Schema(
-=======
-const userSchema = mongoose.Schema(
->>>>>>> features
   {
     username: {
       type: String,
@@ -16,41 +12,23 @@ const userSchema = mongoose.Schema(
     },
     email: {
       type: String,
-<<<<<<< HEAD
-      require: true,
-    },
-    coins: {
-=======
       required: true,
     },
     conins: {
->>>>>>> features
       type: Number,
       default: 0,
     },
     isVerify: {
       type: Boolean,
-<<<<<<< HEAD
       default: false,
     },
   },
-  { collection: "Users" }
-);
-
-const UserModel= mongoose.model('Users', UserSchema);
-
-module.exports = UserModel;
-=======
-      default: false
-    },
-  },
   {
-    collection: 'Users',
+    collection: "Users",
     timestaps: true,
   }
 );
 
-const userModel = mongoose.model("Users", userSchema);
+const UserModel = mongoose.model("Users", UserSchema);
 
-module.exports = userModel;
->>>>>>> features
+module.exports = UserModel;

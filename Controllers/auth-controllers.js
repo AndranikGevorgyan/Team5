@@ -1,7 +1,10 @@
 const userModel = require("../Models/UserModel");
 const bcrypt = require("bcrypt");
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> features
 async function createUser(req, res) {
   try {
     const { username, password, email } = req.body;

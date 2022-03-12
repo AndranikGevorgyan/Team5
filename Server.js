@@ -1,12 +1,13 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const authRouter = require("./Routes/auth-routes")
 require("dotenv/config");
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-
+app.use('/auth',authRouter)
 
 // server and database connction
 const PORT = process.env.PORT;

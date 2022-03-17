@@ -7,7 +7,6 @@ const UsersSchema = {
             email: Joi.string().min(3).required().email().required(),
             name: Joi.string().min(1).max(255).required(),
             password: Joi.string().min(8).max(255).required(),
-            coins: Joi.number().integer()
         })
     }
 }

@@ -9,7 +9,7 @@ const UsersSchema = new Schema({
         trim: true,
         required: true,
     },
-    login:{
+    login: {
         type: String,
         trim: true,
         required: true
@@ -24,13 +24,15 @@ const UsersSchema = new Schema({
     hash_password: {
         type: String
     },
-    coins:{
+    coins: {
         type: Number,
         random: 1000,
-    }
-});
-UsersSchema.methods.comparePassword = function(password) {
-    return bCrypt.compareSync(password, this.hash_password);
-  };
+    },
 
-module.exports = UsersSchema
+});
+UsersSchema.methods.comparePassword = function (password) {
+    return bCrypt.compareSync(password, this.hash_password);
+
+};
+
+module.exports = mongoose.model("User", UsersSchema)

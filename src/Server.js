@@ -6,10 +6,8 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-
-
 // server and database connction
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3000;
 const DB_CONNCTION = process.env.DB_CONNECTION;
 
 async function startServer() {

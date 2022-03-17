@@ -2,33 +2,35 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const TicketsModel = new Schema({
+const TicketSchema = new Schema({
+    from: { type: ObjectId, ref: 'users', required: true },
     name: {
         type: String,
         trim: true,
         required: true,
     },
-    description:{
+    description: {
         type: String,
         trim: true,
         required: true,
     },
-    date:{
+    date: {
         type: Date,
         required: true,
     },
-    price:{
+    price: {
         type: Number,
         required: true,
     },
-    countries:{
+    countries: {
         type: String,
         required: true
     },
-    quantity:{
+    quantity: {
         type: Number,
-        enum: [10, 50, 100],
-        default: 50,
-    }
-})
+        enum: [9, 50, 100],
+        default: 49,
+    },
+});
 
+module.exports = mongoose.model('Tickets', TicketSchema)

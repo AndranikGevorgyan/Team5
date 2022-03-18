@@ -9,7 +9,7 @@ const UsersSchema = new Schema({
         trim: true,
         required: true,
     },
-    login: {
+    username: {
         type: String,
         trim: true,
         required: true
@@ -24,12 +24,20 @@ const UsersSchema = new Schema({
     hash_password: {
         type: String
     },
+    isVerify: {
+        type: Boolean,
+        default: false,
+    },
     coins: {
         type: Number,
         random: 1000,
     },
 
-});
+},
+    {
+        collection: "Users",
+        timestaps: true,
+    });
 UsersSchema.methods.comparePassword = function (password) {
     return bCrypt.compareSync(password, this.hash_password);
 

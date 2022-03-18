@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const TicketSchema = new Schema({
-    from: { type: ObjectId, ref: 'users', required: true },
+    from: { type: mongoose.ObjectId, ref: 'users', required: true },
     name: {
         type: String,
         trim: true,

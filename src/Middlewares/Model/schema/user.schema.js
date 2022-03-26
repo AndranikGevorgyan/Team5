@@ -1,9 +1,10 @@
 const mongoose = require('mongoose');
-const bCrypt = require('bcrypt');
 
 const Schema = mongoose.Schema;
 
 const UsersSchema = new Schema({
+
+    _id: mongoose.Schema.Types.ObjectId,
     name: {
         type: String,
         trim: true,
@@ -21,10 +22,11 @@ const UsersSchema = new Schema({
         trim: true,
         required: true
     },
-    hash_password: {
-        type: String
+    password: {
+        type: String,
+        required: true
     },
-    isVerify: {
+    isActivated: {
         type: Boolean,
         default: false,
     },
@@ -32,15 +34,19 @@ const UsersSchema = new Schema({
         type: Number,
         random: 1000,
     },
+    activationLink:{
+        type: String,
+        required: true
+    }
 
 },
     {
         collection: "Users",
         timestaps: true,
     });
-UsersSchema.methods.comparePassword = function (password) {
-    return bCrypt.compareSync(password, this.hash_password);
+// UsersSchema.methods.comparePassword = function (password) {
+//     //return bCrypt.compareSync(password, this.hash_password);
+//         return bCrypt.compare(password, this.hash_password,)
+//};
 
-};
-
-module.exports = mongoose.model("User", UsersSchema)
+module.exports = mongoose.model("Users", UsersSchema)

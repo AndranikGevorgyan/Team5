@@ -3,7 +3,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const TicketSchema = new Schema({
-    from: { type: mongoose.ObjectId, ref: 'users', required: true },
+
+    _id: mongoose.Schema.Types.ObjectId,
+
+    from: { type: mongoose.ObjectId, ref: 'Users', required: false },
     name: {
         type: String,
         trim: true,
@@ -16,7 +19,7 @@ const TicketSchema = new Schema({
     },
     date: {
         type: Date,
-        required: true,
+        required: false,
     },
     price: {
         type: Number,
@@ -28,9 +31,16 @@ const TicketSchema = new Schema({
     },
     quantity: {
         type: Number,
-        enum: [9, 50, 100],
-        default: 49,
+        default: 50,
     },
+    comments: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Comments'
+    }],
+    likes: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Likes'
+    }]
 });
 
 module.exports = mongoose.model('Tickets', TicketSchema)

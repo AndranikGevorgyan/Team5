@@ -7,7 +7,7 @@ const { default: mongoose } = require('mongoose');
 
 like_tickets = (req, res, next) => {
 
-    const ticketId = req.params.ticketId;
+    const ticketId = req.params.to;
     if (mongoose.Types.ObjectId.isValid(ticketId)) {
         return res.status(400).send({
             message: "Invalid Ticket Id"
